@@ -11,10 +11,12 @@ namespace WebApplication1.Controllers
     public class EventosController : ApiController
     {
         // GET: api/Eventos
-        public IEnumerable<string> Get()
+        public Eventos Get()
         {
-            return new string[] { "value1", "value2" };
-        }
+			var repo = new EventosRepository();
+			Eventos e = repo.Retrieve();
+			return e;
+		}
 
         // GET: api/Eventos/5
         public Eventos Get(int id)

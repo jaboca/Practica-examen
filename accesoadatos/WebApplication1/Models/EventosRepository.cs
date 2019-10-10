@@ -10,7 +10,7 @@ namespace WebApplication1.Models
 	{
 		private MySqlConnection Connect()
 		{
-			string connect = "Server=127.0.0.1;Port=3306;Database=Acceso a datos;UID=root;password=";
+			string connect = "Server=127.0.0.1;Port=3306;Database=casa_apuestas;UID=root;password=";
 			MySql.Data.MySqlClient.MySqlConnection conn = new MySqlConnection(connect);
 			return conn;
 		}
@@ -24,7 +24,7 @@ namespace WebApplication1.Models
 			Eventos e = null;
 			if (res.Read())
 			{
-				e = new Eventos(e.GetInt32(1), e.GetString(2), e.GetString(3));
+				e = new Eventos(res.GetInt32(2), res.GetString(1), res.GetString(0));
 			}
 			conn.Close();
 			return e;
