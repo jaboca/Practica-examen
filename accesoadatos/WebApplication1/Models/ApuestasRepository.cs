@@ -29,5 +29,21 @@ namespace WebApplication1.Models
 			conn.Close();
 			return a;
 		}
+
+		internal ApuestasDTO RetrieveDTO()
+		{
+			MySqlConnection conn = Connect();
+			MySqlCommand command = conn.CreateCommand();
+			command.CommandText = "Select * from Apuesta";
+			conn.Open();
+			MySqlDataReader res = command.ExecuteReader();
+			ApuestasDTO a = null;
+			if (res.Read())
+			{
+				a = new ApuestasDTO(res.GetString(0), res.GetString(1), res.GetDecimal(2), res.GetDecimal(3), res.GetString(4));
+			}
+			conn.Close();
+			return a;
+		}
 	}
 }

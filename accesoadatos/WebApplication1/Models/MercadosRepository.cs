@@ -29,5 +29,21 @@ namespace WebApplication1.Models
 			conn.Close();
 			return m;
 		}
+
+		internal MercadosDTO RetrieveDTO()
+		{
+			MySqlConnection conn = Connect();
+			MySqlCommand command = conn.CreateCommand();
+			command.CommandText = "Select * from Mercado";
+			conn.Open();
+			MySqlDataReader res = command.ExecuteReader();
+			MercadosDTO m = null;
+			if (res.Read())
+			{
+				m = new MercadosDTO( res.GetString(0),  res.GetString(1));
+			}
+			conn.Close();
+			return m;
+		}
 	}
 }

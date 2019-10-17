@@ -11,10 +11,11 @@ namespace WebApplication1.Controllers
     public class MercadosController : ApiController
     {
         // GET: api/Mercados
-        public Mercados Get()
+        public MercadosDTO Get()
         {
 			var repo = new MercadosRepository();
-			Mercados d = repo.Retrieve();
+			//Mercados d = repo.Retrieve();
+			MercadosDTO d = repo.RetrieveDTO();
 			return d;
 		}
 

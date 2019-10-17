@@ -29,5 +29,21 @@ namespace WebApplication1.Models
 			conn.Close();
 			return e;
 		}
+
+		internal EventosDTO RetrieveDTO()
+		{
+			MySqlConnection conn = Connect();
+			MySqlCommand command = conn.CreateCommand();
+			command.CommandText = "Select * from Evento";
+			conn.Open();
+			MySqlDataReader res = command.ExecuteReader();
+			EventosDTO e = null;
+			if (res.Read())
+			{
+				e = new EventosDTO (res.GetString(0), res.GetString(1));
+			}
+			conn.Close();
+			return e;
+		}
 	}
 }

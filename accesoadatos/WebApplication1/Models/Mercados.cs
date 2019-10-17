@@ -26,4 +26,16 @@ namespace WebApplication1.Models
 		public string over_under { get; set; }
 		public string cuota_over_under { get; set; }
 	}
+
+	public class MercadosDTO
+	{
+		public MercadosDTO( string tipo_mercado, string cuota_over_under)
+		{
+			this.tipo_mercado = tipo_mercado;
+			this.cuota_over_under = cuota_over_under;
+		}
+
+		public string tipo_mercado { get; set; }
+		public string cuota_over_under { get; set; }
+	}
 }

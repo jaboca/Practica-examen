@@ -11,10 +11,11 @@ namespace WebApplication1.Controllers
     public class ApuestasController : ApiController
     {
         // GET: api/Apuestas
-        public Apuestas Get()
+        public ApuestasDTO Get()
         {
 			var repo = new ApuestasRepository();
-			Apuestas a = repo.Retrieve();
+			//Apuestas a = repo.Retrieve();
+			ApuestasDTO a = repo.RetrieveDTO();
 			return a;
 		}
 
