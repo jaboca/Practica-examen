@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 
@@ -44,6 +45,24 @@ namespace WebApplication1.Models
 			}
 			conn.Close();
 			return a;
+		}
+
+		internal void Save(Apuestas a)
+		{
+			MySqlConnection conn = Connect();
+			MySqlCommand command = conn.CreateCommand();
+			command.CommandText = "insert into Apuesta(nombreusuario,tipo_mercado,tipo_apuesta,cuota,dinero_apuesta) values ('" + a.nombreusuario + "', '" + a.tipo + "','" + a.tipo_apuesta + "', '" + a.cuota_apuesta + "','" + a.dinero_apuesta + "' );";
+			Debug.WriteLine("comando " + command.CommandText);
+			try
+			{
+				conn.Open();
+				command.ExecuteNonQuery();
+				conn.Close();
+			}
+			catch(MySqlException e)
+			{
+				Debug.WriteLine("se ha producido un error de conexión");
+			}
 		}
 	}
 }

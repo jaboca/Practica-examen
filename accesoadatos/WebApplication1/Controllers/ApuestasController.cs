@@ -28,9 +28,11 @@ namespace WebApplication1.Controllers
         }
 
         // POST: api/Apuestas
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Apuestas d)
         {
-        }
+			var repo = new ApuestasRepository();
+			repo.Save(d);
+		}
 
         // PUT: api/Apuestas/5
         public void Put(int id, [FromBody]string value)
