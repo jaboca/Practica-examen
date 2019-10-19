@@ -57,13 +57,13 @@ namespace WebApplication1.Models
 
             if (a.tipo == "over")
             {
-                command.CommandText = "insert into Apuesta(nombreusuario,tipo_mercado,tipo_apuesta,cuota,dinero_apuesta) values ('" + a.nombreusuario + "', '" + a.tipo + "','" + a.tipo_apuesta + "', '" + a.cuota_apuesta + "','" + a.dinero_apuesta + "' );";
+                command.CommandText = "UPDATE Mercado set dinero_apuesta =Dinero_apuesta"+ a.dinero_apuesta + "WHERE id="+ a.idApuesta +";";
                 Debug.WriteLine("comando " + command.CommandText);
             }
             else if (a.tipo == "under")
             {
-                command.CommandText = "insert into Apuesta(nombreusuario,tipo_mercado,tipo_apuesta,cuota,dinero_apuesta) values ('" + a.nombreusuario + "', '" + a.tipo + "','" + a.tipo_apuesta + "', '" + a.cuota_apuesta + "','" + a.dinero_apuesta + "' );";
-                Debug.WriteLine("comando " + command.CommandText);
+                command.CommandText = "UPDATE Mercado set dinero_apuesta =Dinero_apuesta" + a.dinero_apuesta + "WHERE id=" + a.idApuesta + ";";
+				Debug.WriteLine("comando " + command.CommandText);
             }
 
 			try
