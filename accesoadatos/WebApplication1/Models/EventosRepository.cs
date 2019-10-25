@@ -24,7 +24,7 @@ namespace WebApplication1.Models
 			Eventos e = null;
 			if (res.Read())
 			{
-				e = new Eventos(res.GetInt32(2), res.GetString(1), res.GetString(0));
+				e = new Eventos(res.GetInt32(0), res.GetString(1), res.GetString(2));
 			}
 			conn.Close();
 			return e;

@@ -7,15 +7,15 @@ namespace WebApplication1.Models
 {
 	public class Mercados
 	{
-		public Mercados(int idMercado, int idEvento, string tipoApuesta, float dinero_over_under, string tipo_mercado, string over_under, string cuota_over_under)
+		public Mercados(string tipo_mercado, decimal Mercado_cuotaover, decimal Mercado_cuotaunder, int id, float Mercado_dineroover, float Mercado_dinerounder, int IDEvento)
 		{
-			this.idMercado = idMercado;
-			this.idEvento = idEvento;
-			this.tipoApuesta = tipoApuesta;
-			this.dinero_over_under = dinero_over_under;
 			this.tipo_mercado = tipo_mercado;
-			this.over_under = over_under;
-			this.cuota_over_under = cuota_over_under;
+			this.Mercado_cuotaover = Mercado_cuotaover;
+			this.Mercado_cuotaunder = Mercado_cuotaunder;
+			this.id = id;
+			this.Mercado_dineroover = Mercado_dineroover;
+			this.Mercado_dinerounder = Mercado_dinerounder;
+			this.IDEvento = IDEvento;
 		}
 
 		public int idMercado { get; set; }

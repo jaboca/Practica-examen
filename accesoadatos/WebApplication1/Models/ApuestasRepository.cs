@@ -25,7 +25,7 @@ namespace WebApplication1.Models
 			Apuestas a = null;
 			if (res.Read())
 			{
-				a = new Apuestas( res.GetString(0), res.GetString(1), res.GetString(2), res.GetDecimal(3), res.GetDecimal(4), res.GetDecimal(5), res.GetDecimal(6), res.GetString(7), res.GetInt32(8));
+				a = new Apuestas( res.GetInt32(0), res.GetString(1), res.GetDecimal(2), res.GetDecimal(3), res.GetInt32(4));
 			}
 			conn.Close();
 			return a;

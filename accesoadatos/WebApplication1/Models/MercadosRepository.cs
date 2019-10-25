@@ -24,7 +24,7 @@ namespace WebApplication1.Models
 			Mercados m = null;
 			if (res.Read())
 			{
-				m = new Mercados(res.GetInt32(4), res.GetInt32(3), res.GetString(6), res.GetFloat(5), res.GetString(1), res.GetString(0), res.GetString(2));
+				m = new Mercados(res.GetString(0),res.GetDecimal(1), res.GetDecimal(2), res.GetInt32(3), res.GetFloat(4), res.GetFloat(5), res.GetInt32(6));
 			}
 			conn.Close();
 			return m;
@@ -40,7 +40,7 @@ namespace WebApplication1.Models
 			MercadosDTO m = null;
 			if (res.Read())
 			{
-				m = new MercadosDTO( res.GetString(0),  res.GetString(1));
+				m = new MercadosDTO( res.GetString(0), res.GetDecimal(1), res.GetDecimal(2));
 			}
 			conn.Close();
 			return m;
