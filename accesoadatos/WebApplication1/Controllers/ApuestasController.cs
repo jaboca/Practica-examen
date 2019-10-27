@@ -11,7 +11,8 @@ namespace WebApplication1.Controllers
     public class ApuestasController : ApiController
     {
         // GET: api/Apuestas
-        public ApuestasDTO Get()
+		[Authorize]
+        public ApuestasDTO Get(string Email)
         {
 			var repo = new ApuestasRepository();
 			//Apuestas a = repo.Retrieve();

@@ -20,6 +20,7 @@ namespace WebApplication1.Controllers
 		}
 
         // GET: api/Mercados/5
+		[Authorize(Roles = "Admin")]
         public Mercados Get(int id)
         {
 			var repo = new MercadosRepository();

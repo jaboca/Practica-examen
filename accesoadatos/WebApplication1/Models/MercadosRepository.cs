@@ -18,7 +18,7 @@ namespace WebApplication1.Models
 		{
 			MySqlConnection conn = Connect();
 			MySqlCommand command = conn.CreateCommand();
-			command.CommandText = "Select * from Mercado";
+			command.CommandText = "Select(A.cuota_apuesta,A.tipo,A.dinero_apuesta,U.Email,M.tipo_mercado) from Mercado M INNER JOIN Usuarios U INNER JOIN Apuesta A ON A.ID_MERCADO = M.id AND A.ID_USUARIOS = U.ID; from Mercado";
 			conn.Open();
 			MySqlDataReader res = command.ExecuteReader();
 			Mercados m = null;

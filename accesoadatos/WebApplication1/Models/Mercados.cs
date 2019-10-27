@@ -17,25 +17,28 @@ namespace WebApplication1.Models
 			this.Mercado_dinerounder = Mercado_dinerounder;
 			this.IDEvento = IDEvento;
 		}
-
-		public int idMercado { get; set; }
-		public int idEvento { get; set; }
-		public string tipoApuesta { get; set; }
-		public float dinero_over_under { get; set; }
 		public string tipo_mercado { get; set; }
-		public string over_under { get; set; }
-		public string cuota_over_under { get; set; }
+		public decimal Mercado_cuotaover { get; set; }
+		public decimal Mercado_cuotaunder { get; set; }
+		public int id { get; set; }
+		public float Mercado_dineroover { get; set; }
+		public float Mercado_dinerounder { get; set; }
+		public int IDEvento { get; set; }
 	}
 
 	public class MercadosDTO
 	{
-		public MercadosDTO( string tipo_mercado, string cuota_over_under)
+		public MercadosDTO( string tipo_mercado, decimal Mercado_cuotaover, decimal Mercado_cuotaunder)
 		{
 			this.tipo_mercado = tipo_mercado;
-			this.cuota_over_under = cuota_over_under;
+			this.Mercado_cuotaover = Mercado_cuotaover;
+			this.Mercado_cuotaunder = Mercado_cuotaunder;
+
 		}
 
 		public string tipo_mercado { get; set; }
-		public string cuota_over_under { get; set; }
+		public decimal Mercado_cuotaover { get; set; }
+		public decimal Mercado_cuotaunder { get; set; }
+
 	}
 }

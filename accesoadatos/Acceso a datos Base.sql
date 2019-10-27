@@ -1,49 +1,58 @@
-CREATE DATABASE casa_apuestas,
-USE DATABASE casa_apuestas,
+CREATE DATABASE casa_apuestas;
+USE casa_apuestas;
 
-CREATE TABLE Usuario
-(nombre varchar(45) NOT NULL,
-apellidos VARCHAR(45)NOT NULL,
-email VARCHAR(45) NOT NULL,
-edad INT NOT NULL 
-PRIMARY KEY (perfil,perfil_usuario )
-FOREIGN KEY (perfil,perfilUsuario) );
+CREATE TABLE Usuarios (
+ ID INT NOT NULL AUTO_INCREMENT,
+ Nombre VARCHAR(255) NOT NULL,
+ Apellidos VARCHAR(255) NOT NULL,
+ Email VARCHAR(255) NOT NULL,
+ Edad INT,
+ PRIMARY KEY (ID)
+ );
 
-CREATE TABLE Cuenta
-(PRIMARY KEY (tarjeta_credito varchar(45)) NOT NULL,
-saldo_actual decimal(2)NOT NULL,
+CREATE TABLE Cuenta(
+ID INT NOT NULL AUTO_INCREMENT,
+tarjeta_credito varchar(45) NOT NULL,
+saldo_actual decimal(2) NOT NULL,
 nombre_banco VARCHAR(45) NOT NULL,
-perfil_usuario VARCHAR(45) NOT NULL 
-FOREIGN KEY (perfil_usuario ) );
+ID_Usuario INT NOT NULL,
+PRIMARY KEY (ID),
+FOREIGN KEY (ID_Usuario) REFERENCES Usuarios(ID)
+);
 
-CREATE TABLE Hace
-(PRIMARY KEY (perfilUsuario VARCHAR(45)) NOT NULL,
-tipoApuesta VARCHAR(45) NOT NULL
-FOREIGN KEY (tipoApuesta,tipo) );
-
-CREATE TABLE Apuesta
-(tipo VARCHAR(45) NOT NULL,
-over VARCHAR(45) NOT NULL,
-cuota_apuesta decimal(2) NOT NULL,
-cuota_over/under decimal(2) NOT NULL,
-dinero_apuesta decimal(2) NOT NULL,
-dinero_over/under decimal(2) NOT NULL
-PRIMARY KEY (tipo,tipoApuesta)
-FOREIGN KEY (tipo,Mercado_tipoApuesta) );
-
-CREATE TABLE Mercado
-(over/under VARCHAR(45) NOT NULL,
-tipo_mercado VARCHAR(45) NOT NULL,
-Mercado_cuotaover/under VARCHAR(45) NOT NULL,
-id INT,
-Mercado_dineroover/under VARCHAR(45) NOT NULL,
-Mercado_tipoApuesta VARCHAR(45) NOT NULL
-PRIMARY KEY (over/under)
-FOREIGN KEY (id, idMercado) );
-
-CREATE TABLE Evento
-(equipos VARCHAR(45) NOT NULL,
+CREATE TABLE Evento(
+ID_Equipo INT NOT NULL AUTO_INCREMENT,
 visitante VARCHAR(45) NOT NULL,
 Equipo_local VARCHAR(45) NOT NULL,
-idMercado INT NOT NULL,
-PRIMARY KEY (equipos) );
+PRIMARY KEY (ID_Equipo) 
+);
+
+CREATE TABLE Mercado(
+tipo_mercado VARCHAR(45) NOT NULL,
+Mercado_cuotaover DECIMAL(45) NOT NULL,
+Mercado_cuotaunder DECIMAL(45) NOT NULL,
+id INT NOT NULL AUTO_INCREMENT,
+Mercado_dineroover FLOAT(45) NOT NULL,
+Mercado_dinerounder FLOAT(45) NOT NULL,
+IDEvento INT NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (IDEvento) REFERENCES Evento(ID_Equipo)
+);
+
+
+
+
+
+
+
+CREATE TABLE Apuesta(
+Id INT NOT NULL AUTO_INCREMENT,
+tipo VARCHAR(45) NOT NULL,
+cuota_apuesta decimal(2) NOT NULL,
+dinero_apuesta decimal(2) NOT NULL,
+ID_MERCADO INT NOT NULL,
+ID_USUARIOS INT NOT NULL,
+PRIMARY KEY (Id),
+FOREIGN KEY (ID_MERCADO) REFERENCES Mercado(id)
+);
+

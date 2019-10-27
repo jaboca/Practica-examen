@@ -14,11 +14,11 @@ namespace WebApplication1.Models
 			MySql.Data.MySqlClient.MySqlConnection conn = new MySqlConnection(connect);
 			return conn;
 		}
-		internal Eventos Retrieve()
+		internal Eventos RetrieveMercado()
 		{
 			MySqlConnection conn = Connect();
 			MySqlCommand command = conn.CreateCommand();
-			command.CommandText = "Select * from Evento";
+			command.CommandText = "Select(m.tipo_mercado,m.Mercado_cuotaover,m.Mercado_cuotaunder)  from Mercado m";
 			conn.Open();
 			MySqlDataReader res = command.ExecuteReader();
 			Eventos e = null;
