@@ -41,7 +41,7 @@ namespace WebApplication1.Models
 			ApuestasDTO a = null;
 			if (res.Read())
 			{
-				a = new ApuestasDTO(res.GetString(0), res.GetDecimal(1), res.GetDecimal(2));
+				a = new ApuestasDTO(res.GetString(0), res.GetDecimal(1), res.GetDecimal(2), res.GetString(3), res.GetString(4));
 			}
 			conn.Close();
 			return a;
@@ -55,7 +55,7 @@ namespace WebApplication1.Models
 			command.CommandText = "insert into Apuesta(Id,tipo,cuota_apuesta,dinero_apuesta,ID_MERCADO,ID_USUARIOS) values ('" + a.Id + "', '" + a.tipo + "', " + a.cuota_apuesta + "," + a.dinero_apuesta + "," + a.idApuesta + "," + a.ID_MERCADO + "," + a.ID_USUARIOS + " );";
 			Debug.WriteLine("comando " + command.CommandText);
 
-			Mercados m;
+			m = Controllers.MercadosController.Get(a.ID_MERCADO);
 			double cuota_over;
 			double cuota_under;
 			double prob_over;

@@ -28,16 +28,20 @@ namespace WebApplication1.Models
 
 	public class ApuestasDTO
 	{
-		public ApuestasDTO(string tipo,  decimal cuota_apuesta,  decimal dinero_apuesta)
+		public ApuestasDTO(string tipo,  decimal cuota_apuesta,  decimal dinero_apuesta,string email_Usuario,string Tipo_mercado)
 		{
 			this.tipo = tipo;
 			this.cuota_apuesta = cuota_apuesta;
 			this.dinero_apuesta = dinero_apuesta;
+			this.email_Usuario = email_Usuario;
+			this.Tipo_mercado = Tipo_mercado;
 		}
 
 		public string tipo { get; set; }
 		public decimal cuota_apuesta { get; set; }
 		public decimal dinero_apuesta { get; set; }
+		public string email_Usuario { get; set; }
+		public string Tipo_mercado { get; set; }
 	}
 
 }
